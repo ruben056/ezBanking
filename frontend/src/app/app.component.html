@@ -1,3 +1,8 @@
-<h1>
-  {{title}}
-</h1>
+<div app-add-account header='This is the header'>
+</div>
+
+<ul>
+	<li *ngFor="let account of accounts">
+		{{account.id}} , holder: {{account.accountHolder}} , balance: {{account.balance}} 
+	</li>
+</ul>
