@@ -34,7 +34,6 @@ create REST API to
 - transfer money from one account to the other --> DONE
 TODO : In AccountCtrl: iso returning Account (entity), create specific DTO's for each (view/response)purpose
 
-
 later...:
 ----------------
 - add security: 2 roles ADMIN, USER
@@ -60,3 +59,36 @@ Account:
 ** Transactions (2types):
 *** Deposit : add money to one account
 *** Transfer : move money from one account to another account
+
+
+
+HOWTO RUN:
+----------
+(must have angular/nodejs/npm/etc... installed and in the classpath!!)
+* To Build jar with everything:
+** go to parent module and : 
+	mvn clean install (or package)
+** then run : java -jar backend/target/ezBAnk....jar
+--> app should be running on 8080
+ 
+How the build works:
+-------------------- 
+is a multimodule project:
+ezBank
+|-> ezBank-frontend
+|-> ezBank-backend
+
+* frontEnd build result is put in backend/src/main/resources/static
+* then backend is build including with the files from the frontend...
+(result is an executable jar in backend/target/ that contains back and frontend)
+
+HOW to run in development
+* in ezBank/backend: mvn spring-boot:run  --> runs on 8080
+* in ezBank/frontend: npm start OR ng serve --proxy-config proxy.conf.json  --> runs on 4200
+The frontend "proxyconfig" will forwared all "http://host:4200/api/*" calls to "http://host:8080/api/*" 
+--> this way you can have 2 servers running during development, one for clientside code and one for backend...
+
+
+importing in eclipse:
+---------------------
+import existing maven project > select the parent folder ... import
