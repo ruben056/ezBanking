@@ -1,14 +1,14 @@
-=ezBanking application=
+ezBanking application
 -----------------------
 
-h3.abstract idea
+abstract idea
 ----------------
 It has crossed my mind that NoSQL and DDD would work well together because:
 - NOSQL storage seems a good fit to store the model as documents...
 - In DDD Invariants (consistency of model) is enforced in aggregates (and domain services) 
 	which overcomse the "problem" of schemaless storage
  
-h3.concrete
+concrete
 -----------
 Making a simple banking application using
 - NOSQL solution (mongodb) (no transactions)
@@ -67,8 +67,8 @@ HOWTO RUN:
 (must have angular/nodejs/npm/etc... installed and in the classpath!!)
 * To Build jar with everything:
 ** go to parent module and : 
-	mvn clean install (or package)
-** then run : java -jar backend/target/ezBAnk....jar
+	`mvn clean install` (or package)
+** then run : `java -jar backend/target/ezBAnk....jar`
 --> app should be running on 8080
  
 How the build works:
@@ -83,8 +83,8 @@ ezBank
 (result is an executable jar in backend/target/ that contains back and frontend)
 
 HOW to run in development
-* in ezBank/backend: mvn spring-boot:run  --> runs on 8080
-* in ezBank/frontend: npm start OR ng serve --proxy-config proxy.conf.json  --> runs on 4200
+* in ezBank/backend: `mvn spring-boot:run`  --> runs on 8080
+* in ezBank/frontend: `npm start` OR `ng serve --proxy-config proxy.conf.json`  --> runs on 4200
 The frontend "proxyconfig" will forwared all "http://host:4200/api/*" calls to "http://host:8080/api/*" 
 --> this way you can have 2 servers running during development, one for clientside code and one for backend...
 
