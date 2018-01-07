@@ -1,0 +1,24 @@
+<button type="button" class="btn btn-link" data-toggle="modal" [attr.data-target]="'#transfer'+creditAccount.id">Transfer</button>
+
+<div id="{{'transfer'+creditAccount.id}}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Transfer Money</h4>
+      </div>
+      <div class="modal-body">
+<!--         <p>Some text in the modal.</p> -->
+		<label>creditAccount : {{creditAccount.id}}</label><br/> 
+		<input type="text" #destinationAccount> 
+		<input type="number" #amount/>
+		<button (click)="doTransfer(amount.value, destinationAccount.value)"
+			 type="button" class="btn btn-default" data-dismiss="modal">Transfer</button>
+      </div>
+<!--       <div class="modal-footer"> -->
+        
+<!--       </div> -->
+    </div>
+
+  </div>
+</div>

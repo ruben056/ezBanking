@@ -1,0 +1,22 @@
+<button type="button" class="btn btn-link" data-toggle="modal" [attr.data-target]="'#deposit'+account.id">Deposit</button>
+
+<div id="{{'deposit'+account.id}}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Make Deposit</h4>
+      </div>
+      <div class="modal-body">
+<!--         <p>Some text in the modal.</p> -->
+		<input type="number" #amount/>
+		<button (click)="makeDeposit(amount.value)"
+		 type="button" class="btn btn-default" data-dismiss="modal">Deposit</button>
+      </div>
+<!--       <div class="modal-footer"> -->
+        
+<!--       </div> -->
+    </div>
+
+  </div>
+</div>

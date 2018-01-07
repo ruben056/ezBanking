@@ -1,0 +1,15 @@
+
+<ul class="list-group">
+	<li *ngFor="let account of accounts" class="list-group-item">
+		
+		<span class="badge">balance: {{account.balance}} </span>
+		
+		<app-deposit [account]="account" class="pull-right"></app-deposit>
+		<app-transfer [creditAccount]="account" class="pull-right"></app-transfer>		
+		
+		<h4 class="list-group-item-header">
+			{{account.id}} / {{account.accountHolder}}
+		</h4>
+		
+	</li>
+</ul>
