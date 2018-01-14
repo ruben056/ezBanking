@@ -1,0 +1,22 @@
+
+Backend is secured using JsonWebToken, this can help for testing:
+
+1. try to create account : 
+curl -X POST  http://localhost:8080/api/account/new/user1
+--> authentication error
+
+2. list account
+curl http://localhost:8080/api/account/list
+--> authentication error
+
+
+3. login (will receive jwt):
+curl -i -H "Content-Type: application/json" -X POST -d '{"username":"user1", "password":"pwd"}' http://localhost:8080/login
+--> you receive en Authorization header, which you can now use in all request headers to be authorized"
+
+4. create account again (with authorization header): 
+curl -H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTUxNjc5NzAwM30.shKWl6XjB8ifBthtWdPHeYcbc416MoLoem2uP_Pr7GKIRP38CCDSbR1tZulIZoHCpn1pc3ZKwMWD5_GjXxWcUg" -X POST http://localhost:8080/api/account/new/user1
+--> ok account should be created
+
+5.list accounts again (with authorization header): 
+curl -H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTUxNjc5NzAwM30.shKWl6XjB8ifBthtWdPHeYcbc416MoLoem2uP_Pr7GKIRP38CCDSbR1tZulIZoHCpn1pc3ZKwMWD5_GjXxWcUg" http://localhost:8080/api/account
