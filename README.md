@@ -6,7 +6,7 @@ abstract idea
 It has crossed my mind that NoSQL and DDD would work well together because:
 - NOSQL storage seems a good fit to store the model as documents...
 - In DDD Invariants (consistency of model) is enforced in aggregates (and domain services) 
-	which overcomse the "problem" of schemaless storage
+	which overcomes the "problem" of schemaless storage
  
 concrete
 -----------
@@ -15,11 +15,11 @@ Making a simple banking application using
 - DDD
 eventually:
 - REST API
+- hateoas (hypermedia as the engine of the application state)
 - exceptionhandling with translation to property httpErroCodes for restctrl
 - consumed by angular4 frontend...
 - security etc...
 - swagger to document endpoints
-- hateoas? (hypermedia as the engine of the application state)
 
 
 Requirements:

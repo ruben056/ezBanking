@@ -10,8 +10,8 @@
       <div class="modal-body">
 <!--         <p>Some text in the modal.</p> -->
 		<label>creditAccount : {{creditAccount.id}}</label><br/> 
-		<input type="text" #destinationAccount> 
-		<input type="number" #amount/>
+		<label>debetAccount : </label><input type="text" #destinationAccount> 
+		<label>amount : </label><input type="number" #amount/>
 		<button (click)="doTransfer(amount.value, destinationAccount.value)"
 			 type="button" class="btn btn-default" data-dismiss="modal">Transfer</button>
       </div>
