@@ -83,6 +83,7 @@ ezBank
 (result is an executable jar in backend/target/ that contains back and frontend)
 
 HOW to run in development
+-------------------------
 * in ezBank/backend: `mvn spring-boot:run`  --> runs on 8080
 * in ezBank/frontend: `npm start` OR `ng serve --proxy-config proxy.conf.json`  --> runs on 4200
 The frontend "proxyconfig" will forwared all "http://host:4200/api/*" calls to "http://host:8080/api/*" 
@@ -92,3 +93,20 @@ The frontend "proxyconfig" will forwared all "http://host:4200/api/*" calls to "
 importing in eclipse:
 ---------------------
 import existing maven project > select the parent folder ... import
+
+
+TODO/open issues
+-----------------
+
+Modal window for login is a bit sketchy
+ -	probably all modal window shizzle here under that needs improvement is no longer relevant
+ 	as soon as I start using routing for the different pages iso modals etc...
+ - 	Allow user to register using sign in ... --> page/modal does not exist yet
+ - 	did not get ngbmodal for ngbootstrap to work, so now using plain bootstrap modal...
+ 	which is ok but ... it does not close automatically after login etc ...
+ 	Would be nice to find a decent implementation for this... loginform ... when there is
+ 	time
+ -	Maybe implement a model on the client side for the accounts ...
+ -	start using routing ...
+ - 	...
+ 

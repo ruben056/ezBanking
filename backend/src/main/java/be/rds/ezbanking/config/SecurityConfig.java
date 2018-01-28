@@ -40,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.and().csrf().disable()
 		.authorizeRequests()
 		.antMatchers(SecurityConstants.SIGN_UP_URL).permitAll()
+		.antMatchers(SecurityConstants.SIGN_IN_URL).permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.addFilter(new JWTAuthenticationFilter(authenticationManager()))
@@ -54,7 +55,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+		CorsConfiguration corsConfig = new CorsConfiguration().applyPermitDefaultValues();
+		corsConfig.addExposedHeader("Authorization");
+		source.registerCorsConfiguration("/**", corsConfig);
+		
 		return source;
 	}
 }
