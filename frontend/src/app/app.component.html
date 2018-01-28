@@ -14,15 +14,50 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
 						Sign Up</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-						Login</a></li>
+				<li *ngIf="!loggedIn"><a href="#" data-toggle="modal" data-target="#loginPopup">
+						<span class="glyphicon glyphicon-log-in"></span>
+						Login
+					</a>
+				</li>
+				<li *ngIf="loggedIn"><a href="#" (click)="doLogout()">
+					<span class="glyphicon glyphicon-log-out"></span>
+						Logout
+					</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
 
+<div class="modal fade" id="loginPopup">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Login Form</h3>
+        </div>
+        <!-- body -->
+        <div class="modal-header">
+          <form role="form" #loginForm="ngForm">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="UserName" name="user" ngModel required/>
+              <input type="password" class="form-control" placeholder="Password" name="password" ngModel required/>
+            </div>
+          </form>
+        </div>
+        <!-- footer -->
+        <div class="modal-footer">
+          <button class="btn btn-primary btn-block" (click)="doLogin(loginForm)">Log In</button>
+        </div>
+        
+      </div>
+    </div>
+ </div>
+  
+<div class="container">
 
-	<div app-add-account header='Add account'></div>
-
+	<div app-add-account header='Add account' *ngIf="loggedIn"></div>
+	
 	<app-account-list></app-account-list>
 
 </div>

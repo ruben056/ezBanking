@@ -15,7 +15,7 @@ export class AccountListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.refreshAccounts();
+//    this.refreshAccounts(); // uncomment when finished with auth.
   }
   
   refreshAccounts(){
@@ -24,6 +24,10 @@ export class AccountListComponent implements OnInit {
       error => console.log('error : ', error),
       () => console.log('service call finished')
     );
+  }
+  
+  clearAccounts(){
+    this.accounts = [];
   }
 
 }
