@@ -56,9 +56,9 @@ Account:
 * has a accountHolder (name of person)
 * an id (which is currently the only way to uniquely identify, nee dto add bankaccountnr or something)
 * a list of transactions
-** Transactions (2types):
-*** Deposit : add money to one account
-*** Transfer : move money from one account to another account
+    * Transactions (2types):
+        * Deposit : add money to one account
+        * Transfer : move money from one account to another account
 
 
 
@@ -66,9 +66,10 @@ HOWTO RUN:
 ----------
 (must have angular/nodejs/npm/etc... installed and in the classpath!!)
 * To Build jar with everything:
-** go to parent module and : 
-	`mvn clean install` (or package)
-** then run : `java -jar backend/target/ezBAnk....jar`
+    * go to parent module and : 
+	    `mvn clean install` (or package)	
+    * then run : 
+        `java -jar backend/target/ezBAnk.jar`
 --> app should be running on 8080
  
 How the build works:

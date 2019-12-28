@@ -1,5 +1,7 @@
 package be.rds.ezbanking;
 
+import be.rds.ezbanking.application.security.ApplicationUser;
+import be.rds.ezbanking.application.security.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +12,7 @@ import be.rds.ezbanking.domain.AccountRepository;
 import be.rds.ezbanking.domain.AccountService;
 import be.rds.ezbanking.domain.model.Account;
 import be.rds.ezbanking.infrastructure.CustomSequences;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class EzBankApplication implements CommandLineRunner{
@@ -19,7 +22,11 @@ public class EzBankApplication implements CommandLineRunner{
 	@Autowired
 	AccountService accountService;
 	@Autowired
-	private MongoOperations mongo;
+	ApplicationUserRepository applicationUserRepository;
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	@Autowired
+	MongoOperations mongo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(EzBankApplication.class, args);
@@ -48,6 +55,10 @@ public class EzBankApplication implements CommandLineRunner{
 		cleanupDb();
 		
 		System.out.println(accountRepo.count());
+
+		if(!applicationUserRepository.existsByUsername("user1")){
+			applicationUserRepository.insert(new ApplicationUser("user1", bCryptPasswordEncoder.encode("pwd")));
+		}
 	}
 
 	private void cleanupDb() {
