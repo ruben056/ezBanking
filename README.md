@@ -67,9 +67,9 @@ HOWTO RUN:
 (must have angular/nodejs/npm/etc... installed and in the classpath!!)
 * To Build jar with everything:
     * go to parent module and : 
-	    `mvn clean install` (or package)	
+	    `./mvnw clean install` (or package)	
     * then run : 
-        `java -jar backend/target/ezBAnk.jar`
+        `ava -jjar backend/target/ezBAnk.jar`
 --> app should be running on 8080
  
 How the build works:

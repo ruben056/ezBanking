@@ -1,17 +1,17 @@
 package be.rds.ezbanking;
 
-import be.rds.ezbanking.application.security.ApplicationUser;
-import be.rds.ezbanking.application.security.ApplicationUserRepository;
+import be.rds.ezbanking.security.domain.model.ApplicationUser;
+import be.rds.ezbanking.security.domain.model.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.core.MongoOperations;
 
-import be.rds.ezbanking.domain.AccountRepository;
-import be.rds.ezbanking.domain.AccountService;
-import be.rds.ezbanking.domain.model.Account;
-import be.rds.ezbanking.infrastructure.CustomSequences;
+import be.rds.ezbanking.account.domain.AccountRepository;
+import be.rds.ezbanking.account.domain.AccountService;
+import be.rds.ezbanking.account.domain.model.Account;
+import be.rds.ezbanking.shared.domain.model.CustomSequences;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
