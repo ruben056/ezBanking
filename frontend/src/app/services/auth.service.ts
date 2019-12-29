@@ -10,7 +10,8 @@ import { LocalJwtStorageService } from './local-jwt-storage.service';
 @Injectable()
 export class AuthService {
 
-  private LOGIN_URL = 'http://localhost:4200/login';
+  //proxy.conf.json no longer makes sense if we use correct url here (should go in environment.ts anyway...)
+  private LOGIN_URL = 'http://localhost:8080/login';
   public jwt: string;
 
   constructor(private http: HttpClient, private localJwtStorageService: LocalJwtStorageService) {
@@ -22,11 +23,11 @@ export class AuthService {
   isLoggedIn(): boolean {
     return this.jwt !== undefined;
   }
-  
+
   isLoggedOout(): boolean{
     return !this.isLoggedIn();
   }
-  
+
   // TODO use this to set expiration date when storing in localstorage (also modify localstorage service)
   getTokenExpirationDate(token: string): Date {
     const decoded = jwt_decode(token);
@@ -39,10 +40,10 @@ export class AuthService {
     date.setUTCSeconds(decoded.exp);
     return date;
   }
-  
+
   login(username: string, password: string): Observable<boolean> {
     return this.http.post(
-            `${this.LOGIN_URL}`, 
+            `${this.LOGIN_URL}`,
             JSON.stringify({username: username, password: password}),
             { // TODO consider returning the jwt token in the body, then all these "hacks/workarounds" can go away
              observe: 'response' ,  // required to have full response in reponse (incl header, iso just body)
@@ -62,7 +63,7 @@ export class AuthService {
             }
       });
   }
-  
+
   logout() {
     this.jwt = null;
     this.localJwtStorageService.removeJsonWebToken();
